@@ -4,7 +4,7 @@ import AnimatedButton from "../ui/animatedButton";
 
 const Advert = () => {
   return (
-    <div className=" md:w-[781px] w-[324px] flex flex-col justify-center items-center mx-auto text-center md:text-[70px] md:leading-[98px] leading-[44.8px] text-[32px] font-medium font-grotesk text-cr8tBlack ">
+    <div className="w-full md:max-w-[781px] max-w-[324px] flex flex-col justify-center items-center mx-auto text-center md:text-[70px] md:leading-[98px] leading-[44.8px] text-[32px] font-medium font-grotesk text-cr8tBlack">
       <h1>
         Let’s brew something{" "}
         <span className="text-cr8tOrange font-normal font-urban capitalize">

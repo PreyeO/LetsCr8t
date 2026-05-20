@@ -6,7 +6,7 @@ import Advert from "../Global/Advert";
 
 const HomeServices: React.FC = () => {
   return (
-    <section className="md:pt-[100px] pt-[50px] px-[32px] md:px-0 items-center">
+    <section className="md:pt-[100px] pt-[50px] px-[32px] md:px-0 items-center overflow-hidden w-full">
       <div className="flex flex-col md:gap-[50px] gap-[35px]">
         {/* Header Section */}
         <div className="md:w-[304px] w-[170px] flex flex-col justify-center gap-[10px] mx-auto items-center">
@@ -22,7 +22,7 @@ const HomeServices: React.FC = () => {
         <div className="flex flex-col font-grotesk justify-center items-center mx-auto text-cr8tBlack">
           {Services.map((service, index) => (
             <div
-              className="flex flex-col md:gap-[15px] gap-[10px] justify-center items-center"
+              className="flex flex-col md:gap-[15px] gap-[10px] justify-center items-center w-full"
               key={service.service}
               style={{ maxWidth: service.width }}
             >

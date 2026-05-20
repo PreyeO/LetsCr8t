@@ -109,7 +109,7 @@ function HomeHero() {
           </h3>
         </div>
 
-        <div className="relative bg-[#000000] w-full  lg:h-[150px] flex justify-center items-center mt-5">
+        <div className="relative bg-[#000000] w-full lg:h-[150px] flex justify-center items-center mt-5 overflow-hidden">
           <Marquee
             pauseOnClick
             pauseOnHover

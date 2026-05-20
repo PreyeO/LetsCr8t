@@ -22,7 +22,7 @@ const Clients = () => {
       </div>
 
       {/* Reviews Marquee */}
-      <div className="flex">
+      <div className="flex w-full overflow-hidden">
         <Marquee
           autoFill
           pauseOnClick

@@ -14,89 +14,91 @@ const Works = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Filter out any undefined/null entries from the constants array
   const validWorks = worksData.filter(Boolean);
 
   return (
     <section className="lg:px-[80px] px-6 lg:my-[150px] my-[80px] text-cr8tBlack">
       {/* Header Section */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 lg:mb-32 gap-8">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 lg:mb-24 gap-8">
         <div>
-          <span className="text-cr8tOrange text-sm font-poppins font-medium tracking-[0.2em] uppercase block mb-6">
+          <span className="text-cr8tOrange text-sm font-poppins font-medium tracking-[0.2em] uppercase block mb-5">
             Selected Projects
           </span>
-          <h2 className="font-grotesk text-[40px] md:text-[60px] lg:text-[80px] leading-[1.05] font-bold tracking-tight">
-            Work that <br className="hidden md:block" />
-            <span className="font-urban italic text-cr8tOrange pr-2">
-              speaks
-            </span>{" "}
+          <h2 className="font-grotesk text-[38px] md:text-[56px] lg:text-[72px] leading-[1.05] font-bold tracking-tight">
+            Work that{" "}
+            <span className="font-urban italic text-cr8tOrange">speaks</span>{" "}
             for itself.
           </h2>
         </div>
-        <div className="md:w-[350px] lg:w-[450px] mb-2 lg:mb-4">
+        <div className="md:w-[320px] lg:w-[420px] md:mb-2">
           <p className="font-poppins font-light text-cr8tLightBlack text-base lg:text-lg leading-relaxed">
             We work closely with our clients to build digital experiences that
-            captivate, engage, and ultimately convert. Here is a selection of
-            our recent favorites.
+            captivate, engage, and ultimately convert.
           </p>
         </div>
       </div>
 
-      {/* Staggered Grid Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 w-full">
+      {/* Projects Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 w-full">
         {validWorks.map((portfolio: any, index: number) => {
-          // split project title and description if separated by " - "
           const parts = portfolio.project.split(" - ");
           const title = parts[0];
-          const desc = parts.length > 1 ? parts[1] : "";
+          const desc = parts.length > 1 ? parts.slice(1).join(" - ") : "";
 
-          // Creating a staggered layout by pushing even items down on desktop
-          const isEven = index % 2 !== 0;
+          // Only stagger right-column cards (odd index) on large screens
+          // Also skip stagger on the very last item if it's alone in its row
+          const isRightCol = index % 2 !== 0;
+          const isLastAndAlone =
+            index === validWorks.length - 1 && validWorks.length % 2 !== 0;
+          const staggerClass =
+            isRightCol && !isLastAndAlone ? "md:mt-16 lg:mt-24" : "";
 
           return (
             <div
               key={index}
-              className={`flex flex-col group ${isEven ? "md:mt-32" : ""}`}
+              className={`flex flex-col group ${staggerClass}`}
             >
+              {/* Image card */}
               <a
                 href={portfolio.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full relative block overflow-hidden rounded-[2rem] mb-6 bg-[#F9F9F9] shadow-[0_10px_40px_rgb(0,0,0,0.03)] hover:shadow-[0_20px_60px_rgb(0,0,0,0.08)] transition-all duration-700 ease-out"
+                className="w-full relative block overflow-hidden rounded-[1.5rem] mb-5 bg-[#F1F3F5] shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_60px_rgb(0,0,0,0.1)] transition-all duration-700 ease-out"
               >
                 {loading ? (
-                  <Skeleton className="w-full aspect-[4/3] lg:aspect-[16/10] bg-gray-200" />
+                  <Skeleton className="w-full aspect-[4/3] bg-gray-200 rounded-[1.5rem]" />
                 ) : (
                   <>
-                    <div className="relative w-full aspect-[4/3] lg:aspect-[16/10] bg-[#F1F3F5] overflow-hidden p-6 md:p-10 lg:p-12">
-                      <div className="relative w-full h-full transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] transform group-hover:scale-105">
+                    {/* Image wrapper */}
+                    <div className="relative w-full aspect-[4/3] overflow-hidden p-5 md:p-8 lg:p-10">
+                      <div className="relative w-full h-full transform group-hover:scale-[1.04] transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]">
                         <Image
                           src={portfolio.image}
                           alt={title}
                           layout="fill"
                           objectFit="contain"
                           priority={index < 2}
-                          className="drop-shadow-2xl"
+                          className="drop-shadow-xl"
                         />
                       </div>
                     </div>
 
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-cr8tBlack/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out flex items-center justify-center z-10">
-                      <div className="w-20 h-20 rounded-full bg-white/90 backdrop-blur-sm text-cr8tOrange flex items-center justify-center transform translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] delay-75 shadow-lg">
+                    {/* Hover overlay — sits above the image wrapper */}
+                    <div className="absolute inset-0 bg-cr8tBlack/10 rounded-[1.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out flex items-center justify-center z-20 pointer-events-none">
+                      <div className="w-16 h-16 rounded-full bg-white/95 backdrop-blur-sm text-cr8tOrange flex items-center justify-center transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] delay-100 shadow-xl">
                         <svg
-                          width="32"
-                          height="32"
+                          width="26"
+                          height="26"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
-                          strokeWidth="2"
+                          strokeWidth="2.5"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className="transform -rotate-45"
+                          className="-rotate-45"
                         >
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                          <polyline points="12 5 19 12 12 19" />
                         </svg>
                       </div>
                     </div>
@@ -104,21 +106,19 @@ const Works = () => {
                 )}
               </a>
 
+              {/* Project info */}
               {loading ? (
-                <div className="space-y-3 px-2">
-                  <Skeleton className="w-1/2 h-8" />
-                  <Skeleton className="w-1/3 h-5" />
+                <div className="space-y-3 px-1">
+                  <Skeleton className="w-1/2 h-7" />
+                  <Skeleton className="w-2/3 h-5" />
                 </div>
               ) : (
-                <div className="flex flex-col px-2">
-                  <div className="flex items-start justify-between">
-                    <h3 className="font-grotesk text-3xl lg:text-4xl font-bold text-cr8tBlack group-hover:text-cr8tOrange transition-colors duration-300">
-                      {title}
-                    </h3>
-                    <div className="w-10 h-px bg-cr8tLightBlack/30 mt-5 hidden md:block"></div>
-                  </div>
+                <div className="flex flex-col px-1 gap-1.5">
+                  <h3 className="font-grotesk text-2xl lg:text-3xl font-bold text-cr8tBlack group-hover:text-cr8tOrange transition-colors duration-300 leading-tight">
+                    {title}
+                  </h3>
                   {desc && (
-                    <p className="font-poppins text-cr8tLightBlack text-lg mt-2 capitalize font-light">
+                    <p className="font-poppins text-cr8tLightBlack text-[15px] lg:text-base font-light leading-snug">
                       {desc}
                     </p>
                   )}
@@ -133,3 +133,4 @@ const Works = () => {
 };
 
 export default Works;
+
