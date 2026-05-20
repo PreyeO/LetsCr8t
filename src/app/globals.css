@@ -37,14 +37,21 @@ body {
 .animated-container {
   animation: scale 2s ease-in-out infinite;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
-  min-width: 300px;
-  min-height: 550px;
+  min-width: 280px;
+  min-height: 400px;
   border-radius: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin: auto;
+}
+
+@media (min-width: 768px) {
+  .animated-container {
+    min-width: 300px;
+    min-height: 550px;
+  }
 }
 
 
