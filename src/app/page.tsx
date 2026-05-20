@@ -6,10 +6,10 @@ const HomeHero = dynamic(() => import("@/components/Home/HomeHero"), {
   ssr: true, // Critical content for SSR
 });
 const ServiceDisplay = dynamic(
-  () => import("@/components/Home/ServiceDisplay")
+  () => import("@/components/Home/ServiceDisplay"),
 );
 const ClientChallenges = dynamic(
-  () => import("@/components/Home/ClientChallenges")
+  () => import("@/components/Home/ClientChallenges"),
 );
 const HowItWorks = dynamic(() => import("@/components/Home/HowItWorks"));
 const HomeClient = dynamic(() => import("@/components/Home/HomeClient"), {

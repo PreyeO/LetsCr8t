@@ -81,7 +81,7 @@ export default function RootLayout({
         />
       </Head>
       <body
-        className={`${poppins.className}  ${urban.variable}  ${grotesk.variable} `}
+        className={`${poppins.className} ${urban.variable} ${grotesk.variable} overflow-x-hidden`}
       >
         {children}
         <Script id="tawk-to-script" strategy="lazyOnload">
