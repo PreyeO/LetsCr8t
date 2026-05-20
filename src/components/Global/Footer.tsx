@@ -40,7 +40,7 @@ function Footer() {
             <span className="flex items-center md:gap-[2.5px] gap-[5px]">
               <CiMail size={24} color="#202526" />
               <p className="font-light text-cr8tLightBlack">
-                contact@letscr8t.xyz
+                ayibakep@gmail.com
               </p>
             </span>
           </div>
