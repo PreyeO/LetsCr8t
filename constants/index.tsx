@@ -537,4 +537,22 @@ export const LOGOS = [
     width: 60,
     height: 40,
   },
+  {
+    src: "/SERENA-LOGO.png",
+    alt: "Serena Braide",
+    width: 110,
+    height: 40,
+  },
+  {
+    src: "/monago-logo.svg",
+    alt: "Monago",
+    width: 110,
+    height: 40,
+  },
+  {
+    src: "/cloud-topg.svg",
+    alt: "CloudTopG",
+    width: 110,
+    height: 40,
+  },
 ];
