@@ -300,6 +300,12 @@ export const worksData = [
     link: "https://www.crushgoals.app/",
     mobile: "/crushgoals.png",
   },
+  {
+    image: "/monago-ecommerce.png",
+    project: "Monago - A premium e-commerce store delivering a seamless online shopping experience.",
+    link: "https://www.monago.co.uk/",
+    mobile: "/monago-ecommerce.png",
+  },
 ];
 
 export const ServiceListingData = [
